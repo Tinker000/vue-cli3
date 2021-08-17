@@ -1,0 +1,29 @@
+/*
+*scss全局变量库
+*/
+
+// 标准设计
+$baseFontSize: 120/7.5;
+
+// 颜色
+$theme-color: #ffc428;//主题色
+
+/*多行省略*/
+@mixin multi-line-ellipsis($lineLimit, $lineHeight: 1.2, $fixedHeight: false) {
+  line-height: $lineHeight;
+  @if ($fixedHeight) {
+    height: $lineLimit * $lineHeight * 1em;
+  } @else {
+    max-height: $lineLimit * $lineHeight * 1em;
+  }
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lineLimit;
+  -webkit-box-orient: vertical;
+}
+/*像素转换相对单位rem*/
+@function toRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
